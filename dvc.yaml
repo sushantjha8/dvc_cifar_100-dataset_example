@@ -1,0 +1,23 @@
+stages:
+  extraction:
+    dep:
+      - data
+      - data/encodings.pkl
+    cmd: python extraction.py
+  transform:
+    cmd: python datatransform.py
+
+  training:
+    cmd: python train.py
+    dep:
+      - data/encodings.pkl
+      - model_ml
+  
+  evaluateion:
+    cmd: python evalute.py
+    dep:
+      - data/encodings.pkl
+      - model_ml
+    metrics:
+      - data/model_evaluation.json
+      cache: 'false'

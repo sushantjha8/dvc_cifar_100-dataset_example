@@ -1,0 +1,4 @@
+extraction:
+  value: 15
+training:
+  num_col: 100
